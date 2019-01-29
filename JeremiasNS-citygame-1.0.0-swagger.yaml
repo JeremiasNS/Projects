@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: 'Locadora de Jogos'
+  description: 'API para Locacao de Jogos'
+ 
+parameters:
+  codigo:
+    name: id
+    in: path
+    description: codigo do jogo
+    type: integer
+    format: int32
+    required: true
+    
+
+paths:
+  /jogos/{id}:
+    summary: Teste
+    delete:
+      summary: Apaga um jogo especifico
+      parameters:
+      - $ref: '#/parameters/codigo'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Codigo informado não encontrado
+
+  /jogos:
+    get: 
+      summary: Obtém uma lista de Jogos
+      responses:
+        '200':
+          description: Jogos list response
+          content:
+           application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Jogo'
+      security:
+          - OAuth2:
+            - read
+            
+    post:
+      summary: Insere um novo jogo
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Jogo'
+      responses:
+          '201':
+            description: Retorna um novo jogo
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Jogo'
+      security:
+        - OAuth2:
+          - write
+      
+    put:
+      
+               
+components:
+  schemas:
+    Jogo:
+      allOf:
+        - required:
+          - codigo
+          properties:
+            codigo:
+              type: string
+            Id:
+              type: integer
+            Nome:
+              type: string
+            Genero:
+              type: string
+            Classificacao:
+              type: string
+    
+      
+# Added by API Auto Mocking Plugin
+servers:
+# Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/JeremiasNS/citygame/1.0.0
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/CityGamer/CityGamer/1.0
