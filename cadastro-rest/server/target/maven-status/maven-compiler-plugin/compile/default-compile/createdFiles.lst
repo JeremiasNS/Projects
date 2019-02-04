@@ -1,0 +1,8 @@
+com/jeremias/server/model/Cidade.class
+com/jeremias/server/model/Cadastro.class
+com/jeremias/server/config/RestConfig.class
+com/jeremias/server/dao/DAO.class
+com/jeremias/server/dao/JpaDAO.class
+com/jeremias/server/config/Producers.class
+com/jeremias/server/model/Usuario.class
+com/jeremias/server/rest/UsuarioResource.class
