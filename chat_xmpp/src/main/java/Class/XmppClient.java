@@ -16,13 +16,17 @@ public class XmppClient {
         builder
                 .setXmppDomain("xabber.org")
                 .setHost("xabber.org")
-                .setUsernameAndPassword(username, password);
+                .setUsernameAndPassword(username, password)
+                .setResource("desktop-app");
+        
+        connection = new XMPPTCPConnection(builder.build());
     }
 
     public static void main(String[] args) {
     }
 
     public boolean connect() {
+        connection.connect();
     }
 
     public boolean login() {
