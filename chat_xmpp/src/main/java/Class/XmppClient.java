@@ -1,5 +1,10 @@
 package Class;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.jivesoftware.smack.SmackException;
+import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 import org.jxmpp.stringprep.XmppStringprepException;
@@ -26,10 +31,15 @@ public class XmppClient {
     }
 
     public boolean connect() {
-        connection.connect();
-    }
-
-    public boolean login() {
+        try {
+            connection.connect();
+        } catch (SmackException | IOException | XMPPException | InterruptedException e) {
+            throw new RuntimeException(
+            "Não foi possivel conectar ao servidor", e);
+            
+        }
+        
+        return true;
     }
 
 }
