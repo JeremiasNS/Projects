@@ -3,6 +3,7 @@ package Class;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.jivesoftware.smack.chat2.ChatManager;
 import org.jivesoftware.smack.SmackException;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
@@ -15,6 +16,7 @@ public class XmppClient {
     private String password;
     private XMPPTCPConnectionConfiguration.Builder builder;
     private XMPPTCPConnection connection;
+    private ChatManager chatManager;
 
     public XmppClient() throws XmppStringprepException {
         builder = XMPPTCPConnectionConfiguration.builder();
@@ -33,6 +35,7 @@ public class XmppClient {
     public boolean connect() {
         try {
             connection.connect();
+           // chatManager = Chat
         } catch (SmackException | IOException | XMPPException | InterruptedException e) {
             throw new RuntimeException(
             "Não foi possivel conectar ao servidor", e);
