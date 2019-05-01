@@ -39,6 +39,14 @@ public class XmppClient {
             
         }
         
+        try {
+            connection.login();
+        } catch (SmackException | IOException | XMPPException | InterruptedException e) {
+            throw new RuntimeException(
+            "Não foi possivel loga no servidor", e);
+            
+        }
+        
         return true;
     }
 
