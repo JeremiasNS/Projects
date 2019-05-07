@@ -51,11 +51,17 @@ public class XmppClient {
 
             try {
                 EntityBareJid usuario = JidCreate.entityBareFrom(destinatario);
-                chatManager.chatWith(usuario);
+                try {
+                    chatManager.chatWith(usuario).send(msg);
+                } catch (SmackException.NotConnectedException e) {
+                    System.out.println("Vocẽ não está conectado");
+                } catch (InterruptedException e) {
+                    System.out.println("Ocorreu um erro ao tentar enviar a mensagem");
+                }
             } catch (XmppStringprepException ex) {
                 System.out.println("Usuario inválido");
             }
-            
+
         } while (!msg.equalsIgnoreCase("sair"));
     }
 
