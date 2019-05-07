@@ -2,11 +2,15 @@ package Class;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jivesoftware.smack.chat2.ChatManager;
 import org.jivesoftware.smack.SmackException;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
+import org.jxmpp.jid.EntityBareJid;
+import org.jxmpp.jid.impl.JidCreate;
 import org.jxmpp.stringprep.XmppStringprepException;
 
 public class XmppClient {
@@ -29,18 +33,30 @@ public class XmppClient {
     public static void main(String[] args) {
         try {
             XmppClient app = new XmppClient();
-            app.connect();
-            String msg, destinatario;
-            Scanner teclado = new Scanner(System.in);
-            do {
-                System.out.println("Digite o destinatario");
-                destinatario = teclado.nextLine();
-                System.out.println("Digite a mensagem");
-                msg = teclado.nextLine();
-            } while (!msg.equalsIgnoreCase("sair"));
+            app.start();
         } catch (XmppStringprepException ex) {
             System.out.println("Houve um erro ao iniciar o app");
         }
+    }
+
+    private void start() {
+        connect();
+        String msg, destinatario;
+        Scanner teclado = new Scanner(System.in);
+        do {
+            System.out.println("Digite o destinatario");
+            destinatario = teclado.nextLine();
+            System.out.println("Digite a mensagem");
+            msg = teclado.nextLine();
+
+            try {
+                EntityBareJid usuario = JidCreate.entityBareFrom(destinatario);
+                chatManager.chatWith(usuario);
+            } catch (XmppStringprepException ex) {
+                System.out.println("Usuario inválido");
+            }
+            
+        } while (!msg.equalsIgnoreCase("sair"));
     }
 
     public boolean connect() {
