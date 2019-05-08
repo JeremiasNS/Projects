@@ -7,13 +7,16 @@ import java.util.logging.Logger;
 import org.jivesoftware.smack.chat2.ChatManager;
 import org.jivesoftware.smack.SmackException;
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.chat2.Chat;
+import org.jivesoftware.smack.chat2.IncomingChatMessageListener;
+import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 import org.jxmpp.jid.EntityBareJid;
 import org.jxmpp.jid.impl.JidCreate;
 import org.jxmpp.stringprep.XmppStringprepException;
 
-public class XmppClient {
+public class XmppClient implements IncomingChatMessageListener{
 
     private XMPPTCPConnectionConfiguration.Builder builder;
     private XMPPTCPConnection connection;
@@ -51,13 +54,11 @@ public class XmppClient {
 
             try {
                 EntityBareJid usuario = JidCreate.entityBareFrom(destinatario);
-                try {
-                    chatManager.chatWith(usuario).send(msg);
-                } catch (SmackException.NotConnectedException e) {
-                    System.out.println("Vocẽ não está conectado");
-                } catch (InterruptedException e) {
-                    System.out.println("Ocorreu um erro ao tentar enviar a mensagem");
-                }
+                chatManager.chatWith(usuario).send(msg);
+            } catch (SmackException.NotConnectedException e) {
+                System.out.println("Vocẽ não está conectado");
+            } catch (InterruptedException e) {
+                System.out.println("Ocorreu um erro ao tentar enviar a mensagem");
             } catch (XmppStringprepException ex) {
                 System.out.println("Usuario inválido");
             }
@@ -76,6 +77,7 @@ public class XmppClient {
         }
 
         chatManager = ChatManager.getInstanceFor(connection);
+        chatManager.addIncomingListener(this);
 
         try {
             connection.login();
@@ -86,6 +88,12 @@ public class XmppClient {
         }
 
         return true;
+    }
+
+    @Override
+    public void newIncomingMessage(EntityBareJid entityBareJid, Message message, Chat chat) {
+        System.out.println("Msg recebida de " + entityBareJid.getLocalpart() + ":" +
+                message.getBody());
     }
 
 }
