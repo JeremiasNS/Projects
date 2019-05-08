@@ -27,7 +27,7 @@ public class XmppClient implements IncomingChatMessageListener{
         builder
                 .setXmppDomain("xabber.org")
                 .setHost("xabber.org")
-                .setUsernameAndPassword("jeremias.net", "jerenet@tcp")
+                .setUsernameAndPassword("user", "password")
                 .setResource("desktop-app");
 
         connection = new XMPPTCPConnection(builder.build());
