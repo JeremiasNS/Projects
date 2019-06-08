@@ -1,0 +1,8 @@
+/home/aluno/NetBeansProjects/Projects/server/src/main/java/com/jeremiasneres/server/model/Cidade.java
+/home/aluno/NetBeansProjects/Projects/server/src/main/java/com/jeremiasneres/server/model/Cadastro.java
+/home/aluno/NetBeansProjects/Projects/server/src/main/java/com/jeremiasneres/server/config/Producers.java
+/home/aluno/NetBeansProjects/Projects/server/src/main/java/com/jeremiasneres/server/dao/JpaDAO.java
+/home/aluno/NetBeansProjects/Projects/server/src/main/java/com/jeremiasneres/server/model/Usuario.java
+/home/aluno/NetBeansProjects/Projects/server/src/main/java/com/jeremiasneres/server/dao/DAO.java
+/home/aluno/NetBeansProjects/Projects/server/src/main/java/com/jeremiasneres/server/config/RestConfig.java
+/home/aluno/NetBeansProjects/Projects/server/src/main/java/com/manoelcampos/server/rest/UsuarioResource.java
