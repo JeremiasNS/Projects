@@ -23,7 +23,7 @@ public class PilotoResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Piloto findById(@PathParam("id") long id) {
-       // System.out.println("findById: " + id);
+       //System.out.println("findById: " + id);
         return dao.findById(id);
        // return new Piloto();
     }

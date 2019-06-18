@@ -1,7 +1,6 @@
 package com.jeremiasneres.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +20,7 @@ public class Piloto implements Cadastro, Serializable{
     private String telefone;
     private String nome;
     
-    private LocalDate dataNascimento;
+    private String dataNascimento;
     private String cpf;
     private double cht;
 
@@ -42,11 +41,11 @@ public class Piloto implements Cadastro, Serializable{
         this.nome = nome;
     }
 
-    public LocalDate getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
