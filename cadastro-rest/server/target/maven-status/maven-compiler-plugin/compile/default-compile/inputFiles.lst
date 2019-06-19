@@ -1,0 +1,8 @@
+/home/aluno/Downloads/cadastro-rest/server/src/main/java/com/jeremias/server/rest/UsuarioResource.java
+/home/aluno/Downloads/cadastro-rest/server/src/main/java/com/jeremias/server/config/Producers.java
+/home/aluno/Downloads/cadastro-rest/server/src/main/java/com/jeremias/server/model/Usuario.java
+/home/aluno/Downloads/cadastro-rest/server/src/main/java/com/jeremias/server/dao/JpaDAO.java
+/home/aluno/Downloads/cadastro-rest/server/src/main/java/com/jeremias/server/dao/DAO.java
+/home/aluno/Downloads/cadastro-rest/server/src/main/java/com/jeremias/server/config/RestConfig.java
+/home/aluno/Downloads/cadastro-rest/server/src/main/java/com/jeremias/server/model/Cadastro.java
+/home/aluno/Downloads/cadastro-rest/server/src/main/java/com/jeremias/server/model/Cidade.java
